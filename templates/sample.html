@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Mari-Aai Dodha Sanstha Karnur</title>
+
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; 
+            padding-bottom:80px;/* Prevent horizontal scroll */
+        }
+
+        .container {
+            margin: 0;
+            height: 80px; /* Adjust height for the container */
+            width: 100%;
+            background-image: url('./static/images/images.jpeg');
+            background-size: 100% 100%; /* Cover the container */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            position: fixed; /* Fix the container at the top */
+            top: 0; /* Stick to top */
+            left: 0;
+            right: 0;
+            z-index: 1; /* Keep it behind the header */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 60px 0; /* Adjusted padding */
+            width: 100%;
+            position: fixed; /* Fix the header */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2; 
+            /* Ensure it's above the container */
+        }
+
+        .nav {
+            flex-grow: 1;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+        .nav-links .li {
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .nav-links .a {
+            color: black;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            font-size: 12px;
+
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 1px;
+            height: calc(100% - 80px); /* Adjust the height based on the container */
+            box-sizing: border-box;
+            position: relative;
+            z-index: 3;
+
+        }
+
+        .main-title {
+            color: white;
+            font-size: 22px;
+            text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+            padding: 2px;
+            border-radius: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1;
+        }
+
+        .container1 {
+            width: 100vw;
+            height: 100vh; /* Make it take full viewport height */
+            background-image: url('/static/images/images (3).jpeg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: fixed; /* Position this behind everything else */
+            top: 0;
+            left: 0;
+            z-index: -1; /* Ensure this is behind the sections */
+            overflow: hidden; /* Hide any overflow content */
+        }
+
+        .section {
+            padding: 20px;
+            margin-top: 100px;
+            margin-left: 20px;
+            margin-right: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+            position: relative; /* Ensure sections are above container */
+            z-index: 0;
+            bottom:10px; /* Ensure this goes behind the container and header */
+        }
+
+.section1 {
+    padding: 20px;
+    margin: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 0;
+    margin-bottom: 30px;  /* Adds space below the last section */
+}
+
+/* Remove fixed position from footer */
+footer {
+    background-color: #1e2a3f;
+    color: white;
+    text-align: center;
+    padding: px 0;
+    position: fixed;  /* Changed from 'fixed' to 'relative' */
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    margin-top: 10px; /* Adds space above the footer */
+}
+
+/* Add space after the last section */
+.section1:last-of-type {
+    margin-bottom: 20px; /* Ensure enough space for the footer */
+}
+
+
+        h1, h2 {
+            color: #1e2a3f;
+            text-align: center;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .benefit-list li {
+            margin-bottom: 10px;
+        }
+
+        .benefit-list li::before {
+            content: "✔️";
+            margin-right: 10px;
+            color: #28a745;
+        }
+
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 45%;
+            box-sizing: border-box;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1 class="main-title"><i>Shree Mari-Aai Dodha Sanstha Karnur</i></h1>
+        </main>
+        <header>
+            <nav class="nav">
+                <ul class="nav-links">
+
+                    <li class="li"><a href="/about" class="a">About</a></li>
+                    <li class="li"><a href="/contact" class="a">Contact Us</a></li>
+                    <li class="li"><a href="/login" class="a">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <section class="section">
+        <h2>Milkman Service Details</h2>
+        <h3>Milkman Service Overview:</h3>
+        <p><strong>Experienced & Trusted:</strong> Our team of milkmen has over 10 years of experience in delivering fresh milk. They are known for their punctuality and commitment to quality.</p>
+        <p><strong>Personalized Service:</strong> Each milkman understands your preferences, whether it’s a specific delivery time or quantity, ensuring a personalized experience.</p>
+    </section>
+
+    <section class="section1">
+        <h2>Dairy Delivery Service</h2>
+        <h3>What We Offer:</h3>
+        <p><strong>Fresh Milk Options:</strong></p>
+        <ul class="benefit-list">
+            <li><strong>Cow Milk:</strong> Pure, farm-fresh cow milk, ideal for daily consumption.</li>
+            <li><strong>Buffalo Milk:</strong> Creamier, thicker milk for those who prefer rich, full-bodied milk.</li>
+        </ul>
+        <p><strong>Service Benefits:</strong></p>
+        <ul class="benefit-list">
+            <li><strong>Freshness Guaranteed:</strong> We ensure our milk and dairy products are fresh and directly sourced from trusted local farms, ensuring quality every time.</li>
+        </ul>
+    </section>
+
+    <section class="section1">
+        <h2>Delivery Time</h2>
+        <h3>Timely Delivery:</h3>
+        <p>Our milk is delivered fresh every morning between <strong>5:00 AM to 7:00 AM</strong> to ensure that you start your day with fresh milk.</p>
+    </section>
+
+    <section class="section1">
+        <h2>Why Choose Our Dairy Service?</h2>
+        <p>Reasons to choose us:</p>
+        <ul class="benefit-list">
+            <li><strong>Fresh & High-Quality Products:</strong> We guarantee that our milk and dairy products are fresh, free from additives, and sourced from trusted farms.</li>
+            <li><strong>Hygiene Guaranteed:</strong> All our products are packed under strict hygiene conditions to ensure safety and freshness.</li>
+            <li><strong>Timely Delivery:</strong> Our milk is delivered early in the morning between 5:00 AM - 7:00 AM, so you can enjoy fresh milk as soon as you wake up.</li>
+            <li><strong>Affordable Pricing:</strong> We offer the best quality milk and dairy products at prices that are affordable for everyone. No hidden charges, just honest pricing.</li>
+            <li><strong>Customizable Subscription Plans:</strong> Choose from daily, weekly, or custom plans based on your needs.</li>
+            <li><strong>Trusted Service with Customer Support:</strong> Our team is always available to assist you with any queries or issues you might have.</li>
+        </ul>
+    </section>
+
+    <section class="section1">
+        <h2>Our Services</h2>
+        <div class="service-list">
+            <div class="service-item">
+                <h3>Daily Delivery Plan</h3>
+                <p>Get fresh milk delivered to your doorstep every day, perfect for daily consumption.</p>
+            </div>
+            <div class="service-item">
+                <h3>Weekly Delivery Plan</h3>
+                <p>Fresh milk delivered 3-5 times a week based on your preference.</p>
+            </div>
+            <div class="service-item">
+                <h3>Custom Subscription</h3>
+                <p>Customize your milk quantity, delivery days, and type of milk to suit your needs.</p>
+            </div>
+            <div class="service-item">
+                <h3>Special Dairy Products</h3>
+                <p>Order fresh curd, butter, ghee, and paneer along with your milk delivery.</p>
+            </div>
+        </div>
+    </section>
+    <div class="container1">
+    </div>
+    <footer>
+    <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+    <main>
+        <h1 class="main-title"><i>Shree Mari-Aai Dodha Sanstha Karnur</i></h1>
+    </main>
+</div>
+    <title>Insert Fat</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="dropdown" id="fatDropdown">
+        <button class="dropdown-btn" type="button" onclick="toggleDropdown()">Fat</button>
+        <div class="dropdown-content" id="dropdownMenu">
+
+            <a href="/fselect">Select</a>
+
+            {% if session.get('user_type') == 'admin' %}
+            <a href="/finsert">Insert</a>
+            <a href="/fupdate">Update</a>
+            <a href="/fdelete">Delete</a>
+            
+            {% endif %}
+        </div>
+    </div>
+    
+    {% if session.get('user_type') == 'admin' %}
+    <div class="dropdown" id="cDropdown">
+        <button class="dropdown-btn" type="button" onclick="toggleDropdownc()">Customer</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            <a href="/cselect">Select</a>
+            <a href="/cinsert">Insert</a>
+            <a href="/cupdate">Update</a>
+            <a href="/cdelete">Delete</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="dropdown" id="mDropdown">
+        <button class="dropdown-btn" type="button" onclick="toggleDropdownm()">Milk</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            
+            {% if session.get('user_type') == 'admin' %}
+            <a href="/mselect">Select milk</a>
+            <a href="/minsert">Insert milk</a>
+            <a href="/mupdate">Update milk</a>
+            <a href="/mdelete">Delete milk</a>
+            {% endif %}
+            
+            {% if session.get('user_type')=='customer' %} 
+            <a href="/mcselect" >Select milk of customer</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="dropdown" id="lDropdown">
+        <button class="dropdown-btn" type="button" onclick="toggleDropdownl()">Loan</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            
+            {% if session.get('user_type') == 'admin' %}
+            <a href="/lselect">View loan customer</a>
+            <a href="/linsert">Insert or add loan</a>
+            {% endif %}
+            
+            <a href="/ldelete">Loan history</a>
+        </div>
+    </div>
+    <div class="dropdown" id="bDropdown">
+    <button class="dropdown-btn" type="button" onclick="toggleDropdownb()">Bill</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            
+            {% if session.get('user_type') == 'admin' %}
+            <a href="/bill">Generate bill</a>
+            {% endif %}
+            
+            <a href="/billhistory">Bill history</a>
+        </div>
+    </div>
+    <div class="dropdown" id="boDropdown">
+    <button class="dropdown-btn" type="button" onclick="toggleDropdownbo()">Bonus</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            
+            {% if session.get('user_type') == 'admin' %}
+            <a href="/bonus">Create Bonus</a>
+            <a href="/bodelete">See & Delete bonus</a>
+            {% endif %}
+            
+            <a href="/bonushistory">Bonus history</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="/login" class="dropdown-btn logout-link">Logout</a>   
+    </div> 
+</nav>
+
+
+<h2>Insert New Fat</h2>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form method="post">
+    Fat: <input type="number" step="0.01"name="fat" required><br>
+    Price: <input type="number" step="0.01"name="price" required><br>
+    <input type="submit" value="Insert">
+</form>
+
+<footer>
+  <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
+</footer>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

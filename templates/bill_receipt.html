@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+    <title>{{ bill.custno}}_{{bill.end_date }}</title>
+    <style>
+    body {
+    font-family: sans-serif;
+    }
+    
+    table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    border: 2px solid black; /* Outer table border */
+    }
+    
+    th,
+    td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black; /* Default border for all cells */
+    }
+    
+    th[colspan] {
+    text-align: center;
+    }
+    
+    hr {
+    border: 1px solid black;
+    margin: 5px 0;
+    }
+    
+    .print-container {
+    margin-bottom: 20px;
+    }
+    
+    .button-container {
+    text-align: center;
+    margin-bottom: 20px;
+    }
+    
+    button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+    
+    /* Style for the first row (header) bottom border */
+    table tr:first-child th,
+    table tr:last-child th {
+    border: 2px solid black;
+    }
+    
+    /* Remove borders for rows with the no-border-row class */
+    .no-border-row th,
+    .no-border-row td {
+    border: none !important;
+    }
+    
+    /* Ensure borders for the header rows of the data */
+    table tr:nth-child(4) th, /* Date, Morning/Evening headers */
+    table tr:nth-child(5) th /* Milk, Fat, Price headers */ {
+    border: 1px solid black;
+    }
+    
+    @media print {
+    body {
+    width: auto;
+    margin: 0;
+    }
+    
+    .print-container {
+    page-break-after: auto;
+    }
+    
+    table {
+    width: 100%;
+    font-size: 9pt;
+    border: 2px solid black; /* Outer table border for print */
+    table-layout: fixed;
+    }
+    
+    th,
+    td {
+    padding: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid black; /* Default border for all cells in print */
+    }
+    th:first-child,
+    td:first-child {
+    border-left: 1px solid black;
+    }
+    th:last-child,
+    td:last-child {
+    border-right: 1px solid black;
+    }
+    tbody tr:last-child td {
+    border: 2px solid black;
+    }
+    
+    /* Ensure borders for the header rows of the data in print */
+    table tr:nth-child(4) th,
+    table tr:nth-child(5) th {
+    border: 1px solid black;
+    }
+    
+    /* Remove borders for rows with the no-border-row class in print */
+    .no-border-row th,
+    .no-border-row td {
+    border: none !important;
+    }
+    
+    /* Column widths for printing */
+    th:nth-child(1),
+    td:nth-child(1) {
+    width: 70px;
+    }
+    
+    th:nth-child(2),
+    td:nth-child(2),
+    th:nth-child(5),
+    td:nth-child(5) {
+    width: 90px;
+    }
+    
+    th:nth-child(3),
+    td:nth-child(3),
+    th:nth-child(6),
+    td:nth-child(6) {
+    width: 60px;
+    }
+    
+    th:nth-child(4),
+    td:nth-child(4),
+    th:nth-child(7),
+    td:nth-child(7) {
+    width: 90px;
+    }
+    
+    .button-container {
+    display: none;
+    }
+    
+    </style>
+    
+    
+
+
+
+<body>
+    
+
+    <div class="print-container">
+        <table>
+            <tr>
+                <th colspan="9">Shree Mari-aai Dodha Sanstha, Karnoor</th>
+            </tr>
+            <tr class="no-border-row">
+            <td colspan="3">Date:- {{ bill.start_date }} To {{ bill.end_date }}</td>
+            <td colspan="3">Bill no.:- {{ bill.billno }}</td>
+            <td colspan="3">Milk Type:- {{ bill.milk_type }}</td>
+            </tr>
+            <tr class="no-border-row">
+            <td colspan="4">Customer Number:- {{ bill.custno }}</td>
+            <td colspan="5">Customer Name:- {{ bill.cname }}</td>
+            </tr>
+
+
+            <tr>
+                <th rowspan="2">Date</th>
+                <th colspan="4">Morning Milk Data</th>
+                <th colspan="4">Evening Milk Data</th>
+            </tr>
+            <tr>
+                <th>Milk (litre)</th>
+                <th>Fat</th>
+                <th>Rate</th>
+                <th>Price</th>
+                <th>Milk (litre)</th>
+                <th>Fat</th>
+                <th>Rate</th>
+                <th>Price</th>
+            </tr>
+            {% for row in milk %}
+            <tr>
+                <td>{{ row[0] if row[0] != 0 }}</td>
+                <td>{{ row[1] if row[1] != 0 }}</td>
+                <td>{{ row[2] if row[2] != 0 }}</td>
+                <td>{{ row[3] if row[3] != 0 }}</td>
+                <td>{{ row[4] if row[4] != 0 }}</td>
+                <td>{{ row[5] if row[5] != 0 }}</td>
+                <td>{{ row[6] if row[6] != 0 }}</td>
+                <td>{{ row[7] if row[7] != 0 }}</td>
+                <td>{{ row[8] if row[8] != 0 }}</td>
+            </tr>
+            {% endfor %}
+
+
+            <tr>
+                <th>Total</th>
+                <th>{{ total_milk_data[0] }}</th>
+                <th></th>
+                <th></th>
+                <th>{{ total_milk_data[1] }}</th>
+                <th>{{ total_milk_data[2] }}</th>
+                <th></th>
+                <th></th>
+                <th>{{ total_milk_data[3] }}</th>
+            </tr>
+            
+            <tr class="no-border-row">
+            <td colspan="3">Total bill:- ₹{{ bill.total_bill }} </td>
+            <td colspan="3">Total milk:- {{ total_milk_data[4] }}</td>
+            <td colspan="3">Loan Ammount:- ₹{{ bill.loanamm }}</td>
+            </tr>
+            <tr class="no-border-row">
+            <td colspan="3">Net bill:- ₹{{ bill.net_bill }}</td>
+            <td colspan="3">Remaining loan:- ₹{{ bill.rloanamm }}</td>
+            <td colspan="3">Loan Comment:- {{ bill.comment }}</td>
+            </tr>
+            <tr>
+                <th colspan="9" align="center">Propra:- Shivraj Patil Mob.:-9423071393</th>
+            </tr>
+            
+
+            
+        </table>
+    </div>
+    <div class="button-container">
+    <button onclick="window.print()">Print Bill / Save as PDF</button>
+    </div>
+</body>
+
+</html>

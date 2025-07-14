@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>{{ bill.custno}}_{{bill.end_date }}</title>
+    <style>
+    body {
+    font-family: sans-serif;
+    }
+    
+    table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    border: 2px solid black; /* Outer table border */
+    }
+    
+    th,
+    td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black; /* Default border for all cells */
+    }
+    
+    th[colspan] {
+    text-align: center;
+    }
+    
+
+    .print-container {
+    margin-bottom: 20px;
+    }
+    
+    .button-container {
+    text-align: center;
+    margin-bottom: 20px;
+    }
+    
+    button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+    
+    /* Style for the first row (header) bottom border */
+    table tr:first-child th,
+    table tr:last-child th {
+    border: 2px solid black;
+    }
+    
+    /* Remove borders for rows with the no-border-row class */
+    .no-border-row th,
+    .no-border-row td {
+    border-bottom: none !important;
+    border-top:none !important;
+    }
+    
+
+    table tr:nth-child(4) th, /* Date, Morning/Evening headers */
+
+    
+    @media print {
+    body {
+    width: auto;
+    margin: 0;
+    }
+    
+    .print-container {
+    page-break-after: auto;
+    }
+    
+    table {
+    width: 100%;
+    font-size: 9pt;
+    border: 2px solid black; /* Outer table border for print */
+    table-layout: fixed;
+    }
+    
+    th,
+    td {
+    padding: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid black; /* Default border for all cells in print */
+    }
+    th:first-child,
+    td:first-child {
+    border-left: 1px solid black;
+    }
+    th:last-child,
+    td:last-child {
+    border-right: 1px solid black;
+    }
+    tbody tr:last-child td {
+    border: 2px solid black;
+    }
+    
+
+    /*Remove borders for rows with the no-border-row class in print */
+    .no-border-row th,
+    .no-border-row td {
+    border-bottom: none !important;
+    border-top:none !important;
+    }
+
+    .button-container {
+    display: none;
+    }
+    
+    </style>
+
+</head>
+
+<body>
+    
+
+    <div class="print-container">
+        <table>
+            <tr>
+                <th colspan="8">Shree Mari-aai Dodha Sanstha, Karnoor</th>
+            </tr>
+ 
+            <tr class="no-border-row">
+            <th>Date</td>
+            <td>Milk Type</td>
+            <th>Customer Number</td>
+            <th>Customer Name</td>
+            <th>Percentage </td>
+            <td>Total milk</td>
+            <td>Total price</td>
+            <th>Bonus</td></tr>
+            <tr>
+            
+            <tr class="no-border-row">
+            <th>{{ bill.start_date }} To {{ bill.end_date }}</td>
+            <td>{{ bill.milk_type }}</td>
+            <th>{{ bill.custno }}</td>
+            <th>{{ bill.cname }}</td>
+            <th>{{ bill.percentile }}</td>
+            <td>{{ bill.total_milk }}</td>
+            <td>₹ {{ bill.total_price }}</td>
+            <th>₹ {{ bill.bonus }}</td></tr>
+            <tr>
+            <th colspan="8" align="center">Propra:- Shivraj Patil Mob.:-9423071393</th>
+            </tr>
+        </table>
+    </div>
+    <div class="button-container">
+        <button onclick="window.print()">Print Bill / Save as PDF</button>
+    </div>
+    </body>           
+</html>

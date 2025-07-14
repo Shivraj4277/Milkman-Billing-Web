@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="container">
@@ -8,31 +8,10 @@
         <h1 class="main-title"><i>Shree Mari-Aai Dodha Sanstha Karnur</i></h1>
     </main>
 </div>
-    <title>Bill Receipt</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
-    <script>
-        function attemptAutoSubmit() {
-            const startDateInput = document.getElementById('start_date');
-            const endDateInput = document.getElementById('end_date');
-            const generateBillForm = document.querySelector('form[action="/bill"]');
-            const urlParams = new URLSearchParams(window.location.search);
-
-            if (startDateInput.value && endDateInput.value && urlParams.has('start_date') && urlParams.has('end_date') && generateBillForm) {
-                generateBillForm.submit();
-                // To prevent multiple submissions if the conditions are met repeatedly
-                attemptAutoSubmit = function() {};
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', attemptAutoSubmit);
-
-        // Also call it in case the DOM is already loaded by the time the script runs
-        attemptAutoSubmit();
-    </script>
-
-
+    <title>Update Customer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
+</head>
 <body>
-
 <nav>
     <div class="dropdown" id="fatDropdown">
         <button class="dropdown-btn" type="button" onclick="toggleDropdown()">Fat</button>
@@ -117,75 +96,52 @@
     </div> 
 </nav>
 
+
+<h2>Update Customer</h2>
+
 {% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-{% for category, message in messages %}
-<div class="flash-message flash-{{ category }}">
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endwith %}
 
-    {% if not bills_summary %}
 
-        <h2>Generate Bill Receipt</h2>
+<form method="post">
+    <label>Customer No: </label>
+    <input type="number" name="custno" required><br>
+    <label>Name:</label>
+    <input type="text" name="cname" required><br>
 
-        <form method="post" action="/bill">
-            <label for="start_date">Start Date:</label>
-            <input type="date" id="start_date" name="start_date" required value="{{ start_date or '' }}">
+    <label>Milk Type:</label>
+    <div class="radio-group">
+        <label class="radio-container">Cow
+            <input type="radio" name="milk_type" value="cow" required>
+            <span class="checkmark"></span>
+        </label>
 
-            <label for="end_date">End Date:</label>
-            <input type="date" id="end_date" name="end_date" required value="{{ end_date or '' }}">
+        <label class="radio-container">Buffellow
+            <input type="radio" name="milk_type" value="buffellow" required>
+            <span class="checkmark"></span>
+        </label>
+    </div><br>
 
-            <input type="submit" value="Generate Bill">
-        </form>
+<label>Mobile No:</label>
+<input type="tel" name="mobileno" required pattern="[6-9][0-9]{9}" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9"><br>
 
-    {% endif %}
-    {% if bills_summary %}
-    <h2>Total Bill</h2>
-    <h2>Bill Details from {{ start_date }} to {{ end_date }}</h2>
-    <table>
-        <tr>
-            <th class="th">Custno</th>
-            <th class="th">Customer Name</th>
-            <th class="th">Period</th>
-            <th class="th">Total Milk</th>
-            <th class="th">Total Price</th>
-            <th class="th">Action</th>
-        </tr>
-        {% for bill_info in bills_summary %}
-        <tr>
-            <td>{{ bill_info.custno }}</td>
-            <td>{{ bill_info.cname }}</td>
-            <td>{{ bill_info.start_date }} to {{ bill_info.end_date }}</td>
-            <td>{{ bill_info.total_milk }} Liters</td>
-            <td>₹{{ bill_info.total_price }}</td>
-            <td>
-                {% if bill_info.loan_status == "Pay Loan" %}
-                <form action="{{ url_for('pay_loan') }}" method="POST">
-                    <input type="hidden" name="custno" value="{{ bill_info.custno }}">
-                    <input type="hidden" name="start_date" value="{{ bill_info.start_date }}">
-                    <input type="hidden" name="end_date" value="{{ bill_info.end_date }}">
-                    <input type="hidden" name="total_milk" value="{{ bill_info.total_milk }}">
-                    <input type="hidden" name="total_price" value="{{ bill_info.total_price }}">
-                    <input type="number" step="0.01" name="loan_paid" required>
-                    <input type="submit" value="Pay loan">
-                </form>
-                {% else %}
-                <a href="{{ url_for('generate_individual_bill', custno=bill_info.custno, start_date=bill_info.start_date, end_date=bill_info.end_date) }}"
-                    target="_blank">Print Bill</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-    
+
+    <label>Address:</label>
+    <input type="text" name="address">
+
+    <input type="submit" value="Update">
+</form>
+
 <footer>
   <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
 </footer>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
-
 </html>

@@ -10,27 +10,6 @@
 </div>
     <title>Bill Receipt</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
-    <script>
-        function attemptAutoSubmit() {
-            const startDateInput = document.getElementById('start_date');
-            const endDateInput = document.getElementById('end_date');
-            const generateBillForm = document.querySelector('form[action="/bill"]');
-            const urlParams = new URLSearchParams(window.location.search);
-
-            if (startDateInput.value && endDateInput.value && urlParams.has('start_date') && urlParams.has('end_date') && generateBillForm) {
-                generateBillForm.submit();
-                // To prevent multiple submissions if the conditions are met repeatedly
-                attemptAutoSubmit = function() {};
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', attemptAutoSubmit);
-
-        // Also call it in case the DOM is already loaded by the time the script runs
-        attemptAutoSubmit();
-    </script>
-
-
 <body>
 
 <nav>
@@ -117,6 +96,7 @@
     </div> 
 </nav>
 
+
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category, message in messages %}
@@ -129,56 +109,35 @@
 
     {% if not bills_summary %}
 
-        <h2>Generate Bill Receipt</h2>
+        <h2>Generate Bill History</h2>
 
-        <form method="post" action="/bill">
-            <label for="start_date">Start Date:</label>
-            <input type="date" id="start_date" name="start_date" required value="{{ start_date or '' }}">
-
-            <label for="end_date">End Date:</label>
-            <input type="date" id="end_date" name="end_date" required value="{{ end_date or '' }}">
-
-            <input type="submit" value="Generate Bill">
+        <form method="post">
+            <label for="custno">Custno:</label>
+            <input type="number"name="custno" required><br>
+            <input type="submit" value="Show Bills">
         </form>
 
     {% endif %}
     {% if bills_summary %}
-    <h2>Total Bill</h2>
-    <h2>Bill Details from {{ start_date }} to {{ end_date }}</h2>
+    <h2>Bill history</h2>
     <table>
         <tr>
             <th class="th">Custno</th>
             <th class="th">Customer Name</th>
-            <th class="th">Period</th>
+            <th class="th">Peroid</th>
             <th class="th">Total Milk</th>
             <th class="th">Total Price</th>
-            <th class="th">Action</th>
         </tr>
-        {% for bill_info in bills_summary %}
+        {% for row in bills_summary %}
         <tr>
-            <td>{{ bill_info.custno }}</td>
-            <td>{{ bill_info.cname }}</td>
-            <td>{{ bill_info.start_date }} to {{ bill_info.end_date }}</td>
-            <td>{{ bill_info.total_milk }} Liters</td>
-            <td>₹{{ bill_info.total_price }}</td>
-            <td>
-                {% if bill_info.loan_status == "Pay Loan" %}
-                <form action="{{ url_for('pay_loan') }}" method="POST">
-                    <input type="hidden" name="custno" value="{{ bill_info.custno }}">
-                    <input type="hidden" name="start_date" value="{{ bill_info.start_date }}">
-                    <input type="hidden" name="end_date" value="{{ bill_info.end_date }}">
-                    <input type="hidden" name="total_milk" value="{{ bill_info.total_milk }}">
-                    <input type="hidden" name="total_price" value="{{ bill_info.total_price }}">
-                    <input type="number" step="0.01" name="loan_paid" required>
-                    <input type="submit" value="Pay loan">
-                </form>
-                {% else %}
-                <a href="{{ url_for('generate_individual_bill', custno=bill_info.custno, start_date=bill_info.start_date, end_date=bill_info.end_date) }}"
-                    target="_blank">Print Bill</a>
-                {% endif %}
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}} To {{row[3]}}</td>
+            <td>{{row[4]}} Liter</td>
+            <td>₹ {{row[5]}}</td>
             </td>
         </tr>
-        {% endfor %}
+        {% endfor%}
     </table>
     {% endif %}
     

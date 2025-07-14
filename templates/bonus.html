@@ -1,6 +1,7 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="container">
@@ -10,26 +11,7 @@
 </div>
     <title>Bill Receipt</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
-    <script>
-        function attemptAutoSubmit() {
-            const startDateInput = document.getElementById('start_date');
-            const endDateInput = document.getElementById('end_date');
-            const generateBillForm = document.querySelector('form[action="/bill"]');
-            const urlParams = new URLSearchParams(window.location.search);
-
-            if (startDateInput.value && endDateInput.value && urlParams.has('start_date') && urlParams.has('end_date') && generateBillForm) {
-                generateBillForm.submit();
-                // To prevent multiple submissions if the conditions are met repeatedly
-                attemptAutoSubmit = function() {};
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', attemptAutoSubmit);
-
-        // Also call it in case the DOM is already loaded by the time the script runs
-        attemptAutoSubmit();
-    </script>
-
+</head>
 
 <body>
 
@@ -117,34 +99,37 @@
     </div> 
 </nav>
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-{% for category, message in messages %}
-<div class="flash-message flash-{{ category }}">
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="flash-message flash-{{ category }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
     {% if not bills_summary %}
 
         <h2>Generate Bill Receipt</h2>
 
-        <form method="post" action="/bill">
+        <form method="post" action="/bonus">
             <label for="start_date">Start Date:</label>
             <input type="date" id="start_date" name="start_date" required value="{{ start_date or '' }}">
 
             <label for="end_date">End Date:</label>
             <input type="date" id="end_date" name="end_date" required value="{{ end_date or '' }}">
-
-            <input type="submit" value="Generate Bill">
+            
+            <label for="Percentile">Percentage:</label>
+            <input type="number" id="percentage" name="percentage" required value="{{ percentage or '' }}" min="0" max="100" step="0.01">
+            <input type="submit" value="Generate Bonus">
         </form>
 
     {% endif %}
     {% if bills_summary %}
-    <h2>Total Bill</h2>
-    <h2>Bill Details from {{ start_date }} to {{ end_date }}</h2>
+    <h2>Total Bonus</h2>
+    <h2>Bonus Details from {{ start_date }} to {{ end_date }}</h2>
     <table>
         <tr>
             <th class="th">Custno</th>
@@ -152,6 +137,8 @@
             <th class="th">Period</th>
             <th class="th">Total Milk</th>
             <th class="th">Total Price</th>
+            <th class="th">Percentage</th>
+            <th class="th">Bonus</th>
             <th class="th">Action</th>
         </tr>
         {% for bill_info in bills_summary %}
@@ -161,27 +148,18 @@
             <td>{{ bill_info.start_date }} to {{ bill_info.end_date }}</td>
             <td>{{ bill_info.total_milk }} Liters</td>
             <td>₹{{ bill_info.total_price }}</td>
+            <td>{{ bill_info.percentage }} </td>
+            <td>₹{{ bill_info.bonus }}</td>
             <td>
-                {% if bill_info.loan_status == "Pay Loan" %}
-                <form action="{{ url_for('pay_loan') }}" method="POST">
-                    <input type="hidden" name="custno" value="{{ bill_info.custno }}">
-                    <input type="hidden" name="start_date" value="{{ bill_info.start_date }}">
-                    <input type="hidden" name="end_date" value="{{ bill_info.end_date }}">
-                    <input type="hidden" name="total_milk" value="{{ bill_info.total_milk }}">
-                    <input type="hidden" name="total_price" value="{{ bill_info.total_price }}">
-                    <input type="number" step="0.01" name="loan_paid" required>
-                    <input type="submit" value="Pay loan">
-                </form>
-                {% else %}
-                <a href="{{ url_for('generate_individual_bill', custno=bill_info.custno, start_date=bill_info.start_date, end_date=bill_info.end_date) }}"
-                    target="_blank">Print Bill</a>
-                {% endif %}
+                <a href="{{ url_for('generate_individual_bonus', custno=bill_info.custno, cname=bill_info.cname, start_date=bill_info.start_date, end_date=bill_info.end_date, total_milk=bill_info.total_milk, total_price=bill_info.total_price, percentile=bill_info.percentage, bonus=bill_info.bonus) }}"
+                    target="_blank">Print Bonus</a>
+
             </td>
         </tr>
         {% endfor %}
     </table>
     {% endif %}
-    
+
 <footer>
   <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
 </footer>

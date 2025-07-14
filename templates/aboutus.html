@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Shree Mari-Aai Dodha Sanstha Karnur</title>
+  <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;   /* ✅ Use min-height instead of height */
+  width: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  padding-bottom: 50px; /* ✅ Add space for footer */
+}
+
+
+    .container {
+      height: 80px;
+      width: 100%;
+      background-image: url('/static/images/images.jpeg');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    .nav {
+      flex-grow: 1;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+
+    .nav-links .li {
+      margin: 0;
+    }
+
+    .nav-links .a {
+        color: black;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        font-size: 12px;
+    
+    }
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 1px;
+    height: calc(100% - 80px); /* Adjust the height based on the container */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+
+}
+
+
+    .main-title {
+      color: white;
+      font-size: 22px;
+      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+      padding: 2px;
+      border-radius: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1;
+    }
+
+    .container1 {
+      width: 100vw;
+      height: 100vh;
+      background-image: url('/static/images/images (3).jpeg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .section1 {
+      padding: 20px;
+      margin: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 0;
+      margin-bottom: 30px;
+    }
+
+.section {
+  padding: 20px;
+  margin: 100px 20px 30px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+    footer {
+    background-color: #1e2a3f;
+    color: white;
+    text-align: center;
+    padding: px 0;
+    position: fixed;  /* Changed from 'fixed' to 'relative' */
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    margin-top: 10px; /* Adds space above the footer */
+    }
+    
+    /* Add space after the last section */
+    .section1:last-of-type {
+    margin-bottom: 0px; /* Ensure enough space for the footer */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main>
+      <h1 class="main-title"><i>Shree Mari-Aai Dodha Sanstha Karnur</i></h1>
+    </main>
+    <header>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li class="li"><a href="/home" class="a">Home</a></li>
+
+          <li class="li"><a href="/contact" class="a">Contact Us</a></li>
+          <li class="li"><a href="/login" class="a">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <section class="section">
+    <h2 style="text-align:center; color:#1e2a3f;">About Us</h2>
+    <p><strong>Shree Mari-Aai Dodha Sanstha Karnur</strong> is a trusted milk and dairy delivery service from Karnur. With over a decade of experience in dairy distribution, we are committed to bringing pure, farm-fresh milk to your doorstep every morning.</p>
+    <p>We offer fresh cow and buffalo milk, along with other dairy products such as curd, ghee, and butter. Our delivery is always timely (5:00 AM to 7:00 AM), hygienic, and tailored to your subscription needs.</p>
+    <p>We believe in transparency, customer satisfaction, and long-term trust. Whether you are an individual household or a business, our dairy service can be customized to your requirement.</p>
+  </section>
+
+  <section class="section1">
+    <h2 style="text-align:center; color:#1e2a3f;">Why Choose Us?</h2>
+    <ul>
+      <li>Fresh and pure milk directly from local farms</li>
+      <li>Timely delivery every morning</li>
+      <li>Affordable and transparent pricing</li>
+      <li>Easy subscription and billing system</li>
+      <li>Friendly and experienced delivery team</li>
+    </ul>
+  </section>
+
+  <div class="container1"></div>
+
+  <footer>
+    <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Shree Mari-Aai Dodha Sanstha Karnur</title>
+  <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;   /* ✅ Use min-height instead of height */
+  width: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  padding-bottom: 50px; /* ✅ Add space for footer */
+}
+
+
+    .container {
+      height: 80px;
+      width: 100%;
+      background-image: url('/static/images/images.jpeg');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    .nav {
+      flex-grow: 1;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+
+    .nav-links .li {
+      margin: 0;
+    }
+
+    .nav-links .a {
+        color: black;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        font-size: 12px;
+    
+    }
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 1px;
+    height: calc(100% - 80px); /* Adjust the height based on the container */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 3;
+
+}
+
+
+    .main-title {
+      color: white;
+      font-size: 22px;
+      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+      padding: 2px;
+      border-radius: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1;
+    }
+
+    .container1 {
+      width: 100vw;
+      height: 100vh;
+      background-image: url('/static/images/images (3).jpeg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .section1 {
+      padding: 20px;
+      margin: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 0;
+      margin-bottom: 30px;
+    }
+
+.section {
+  padding: 20px;
+  margin: 100px 20px 30px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+    footer {
+    background-color: #1e2a3f;
+    color: white;
+    text-align: center;
+    padding: px 0;
+    position: fixed;  /* Changed from 'fixed' to 'relative' */
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    margin-top: 10px; /* Adds space above the footer */
+    }
+    
+    /* Add space after the last section */
+    .section1:last-of-type {
+    margin-bottom: 0px; /* Ensure enough space for the footer */
+    }
+    form {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+    font-size: 20px;
+    }
+    input[type="number"],
+    input[type="tel"],
+    input[type="submit"] {
+    width: 85%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    .flash-message {
+    padding: 10px;
+    margin: 15px auto;
+    border-radius: 7px;
+    text-align: center;
+    width: 80%;
+    }
+    
+    .flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    }
+    
+    .flash-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    }
+    
+    @media screen and (max-width: 768px) {
+    
+    form {
+    width: 60%;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main>
+      <h1 class="main-title"><i>Shree Mari-Aai Dodha Sanstha Karnur</i></h1>
+    </main>
+    <header>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li class="li"><a href="/home" class="a">Home</a></li>
+          <li class="li"><a href="/about" class="a">About</a></li>
+          <li class="li"><a href="/contact" class="a">Contact Us</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <h2 style="margin-top:90px; text-align:center;"><i>Login</i></h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+<form method="post">
+    <label>Customer No: </label>
+    <input type="number" name="custno" required><br>
+    <label>Mobile No:</label>
+    <input type="tel" name="mobileno" required pattern="[6-9][0-9]{9}" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9"><br>
+    <input type="submit" value="Login">
+</form>
+  <div class="container1"></div>
+<footer>
+  <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
+</footer>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

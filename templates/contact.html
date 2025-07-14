@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Shree Mari-Aai Dodha Sanstha Karnur</title>
+
+    <!-- Updated Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style type="text/css">
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden; 
+        padding-bottom:80px;/* Prevent horizontal scroll */
+    }
+
+    .container {
+        margin: 0;
+        height: 80px; /* Adjust height for the container */
+        width: 100%;
+        background-image: url('/static/images/images.jpeg');
+        background-size: 100% 100%; /* Cover the container */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat;
+        position: fixed; /* Fix the container at the top */
+        top: 0; /* Stick to top */
+        left: 0;
+        right: 0;
+        z-index: 1; /* Keep it behind the header */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+              box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        padding: 60px 0; /* Adjusted padding */
+        width: 100%;
+        position: fixed; /* Fix the header */
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2; 
+        /* Ensure it's above the container */
+    }
+
+    .nav {
+        flex-grow: 1;
+    }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .nav-links .li {
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .nav-links .a {
+        color: black;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        font-size: 12px;
+    
+    }
+
+    main {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 1px;
+        height: calc(100% - 80px); /* Adjust the height based on the container */
+        box-sizing: border-box;
+        position: relative;
+        z-index: 3;
+
+    }
+
+    .main-title {
+        color: white;
+        font-size: 22px;
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+        padding: 2px;
+        border-radius: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1;
+    }
+
+    .container1 {
+        width: 100vw;
+        height: 100vh; /* Make it take full viewport height */
+        background-image: url('/static/images/images (3).jpeg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: fixed; /* Position this behind everything else */
+        top: 0;
+        left: 0;
+        z-index: -1; /* Ensure this is behind the sections */
+        overflow: hidden; /* Hide any overflow content */
+    }
+
+    .section {
+        padding: 20px;
+        margin-top: 100px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+        position: relative; /* Ensure sections are above container */
+        z-index: 0;
+        bottom:10px; /* Ensure this goes behind the container and header */
+    }
+
+.section1 {
+padding: 20px;
+margin: 15px;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+position: relative;
+z-index: 0;
+margin-bottom: 30px;  /* Adds space below the last section */
+}
+
+/* Remove fixed position from footer */
+footer {
+background-color: #1e2a3f;
+color: white;
+text-align: center;
+padding: px 0;
+position: fixed;  /* Changed from 'fixed' to 'relative' */
+bottom: 0;
+width: 100%;
+z-index: 999;
+margin-top: 10px; /* Adds space above the footer */
+}
+
+/* Add space after the last section */
+.section1:last-of-type {
+margin-bottom: 2px; /* Ensure enough space for the footer */
+}
+
+
+    h1, h2 {
+        color: #1e2a3f;
+        text-align: center;
+    }
+
+    .benefit-list {
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    .benefit-list li {
+        margin-bottom: 10px;
+    }
+
+    .benefit-list li::before {
+        content: "✔️";
+        margin-right: 10px;
+        color: #28a745;
+    }
+
+    .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .service-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        width: 45%;
+        box-sizing: border-box;
+    }
+
+
+</style>
+</head>
+<body>
+<div class="container">
+    <main>
+        <h1 class="main-title"><i>Shree Mari-Aai Dodha Sanstha Karnur</i></h1>
+    </main>
+    <header>
+        <nav class="nav">
+            <ul class="nav-links">
+                <li class="li"><a href="/home" class="a">Home</a></li>
+                <li class="li"><a href="/about" class="a">About</a></li>
+
+                <li class="li"><a href="/login" class="a">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
+
+    <section class="section">
+            <h2 style="text-align:center; color:#1e2a3f;">Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us using the details below:</p>
+    <div style="margin-left:20px; line-height: 0.2;">
+        <p><i class="fas fa-phone" style="margin-right:10px;"></i><strong>Phone:</strong> +91 9876543210</p>
+        <p><i class="fas fa-envelope" style="margin-right:10px;"></i><strong>Email:</strong> <a href="mailto:support@mariai-dairy.com">support@mariai-dairy.com</a></p>
+        <p><i class="fab fa-whatsapp" style="margin-right:10px;"></i><strong>WhatsApp:</strong> +91 9876543210</p>
+        <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i><strong>Address:</strong> Karnur, India</p>
+    </div>
+        <p>We’re available every day from 6:00 AM to 8:00 PM. Feel free to reach out to us anytime!</p>
+    </section>
+
+
+    <div class="container1"></div>
+
+<footer>
+  <p>&copy; 2025 Shree Mari-Aai Dodha Sanstha Karnur. All Rights Reserved.<br>Created by Shivraj Patil.</p>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
